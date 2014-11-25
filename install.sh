@@ -1,6 +1,8 @@
 #!/bin/bash
 # git
 sudo apt-get install git -y
+git config --global user.email czasocheci@gmail.com
+git config --global user.name czasocheci
 
 _INSTALL_HOME=/home/czasocheci/work
 #/work
