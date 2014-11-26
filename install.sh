@@ -70,6 +70,20 @@ CREATE DATABASE dbname OWNER dbuser;
 \q
 exit
 
+#dropbox
+# https://www.dropbox.com/install?os=lnx
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+.dropbox-dist/dropboxd
+
+
+#rsync
+cd $_INSTALL_HOME
+touch _rsync_workspace.sh
+chmod +x _rsync_workspace.sh
+echo "rsync -r --exclude '*/target' --exclude '*/.*' --delete /home/pnaro/workspace /home/pnaro/Dropbox" > _rsync_workspace.sh
+touch _rsync_workspace.sh
+chmod +x _rsync_workspace.sh
+crontab -l | { cat; echo "*/2 * * * * /home/pnaro/_rsync_workspace.sh"; } | crontab -
 
 #env
 cd $_INSTALL_HOME
