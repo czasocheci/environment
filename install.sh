@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # git
 sudo apt-get install git -y
 git config --global user.email czasocheci@gmail.com
@@ -19,6 +20,7 @@ cd $_JAVA_DIR
 wget https://www.dropbox.com/s/alue6vidafgltfj/jdk-7u60-linux-x64.gz
 tar -zxf jdk-7u60-linux-x64.gz
 ln -s jdk1.7.0_60 jdk
+
 export JAVA_HOME=$_JAVA_DIR/jdk
 export PATH=$JAVA_HOME/bin:$PATH
 
@@ -69,3 +71,16 @@ CREATE DATABASE dbname OWNER dbuser;
 exit
 
 
+#env
+cd $_INSTALL_HOME
+_ENV_FILE=_work.sh
+touch $_ENV_FILE
+chmod +x $_ENV_FILE
+JAVA_HOME=$_JAVA_DIR/jdk
+M2_HOME=$_MAVEN_DIR/mvn
+PATH=$JAVA_HOME/bin:$PATH
+PATH=$M2_HOME/bin:$PATH
+echo "export JAVA_HOME=$JAVA_HOME" >> $_ENV_FILE
+echo "export M2_HOME=$M2_HOME" >> $_ENV_FILE
+echo "export PATH=$PATH" >> $_ENV_FILE
+source _work.sh
